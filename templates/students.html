@@ -1,0 +1,12 @@
+{% extends "layout.html" %}
+{% block head %}
+  {{ super() }}
+{% endblock %}
+{% block content %}
+  <h1>Listado de alumnos</h1>
+  <ul>
+  {% for student in students %}
+  <li>{{ student.firstname }} {{ student.lastname }} <a type="button" class="btn btn-outline-primary btn-sm" href="/borrar/{{student.id}}">Borrar</a></li>
+  {% endfor %}
+  </ul>
+{% endblock %}

@@ -1,0 +1,9 @@
+{% extends "layout.html" %} {% block head %} {{ super() }} {% endblock %} {%
+block content %}
+<h1>Ayuda</h1>
+<p>Esta página es vulnerable a CSRF</p>
+<ol>
+  <li>En primer lugar realiza un ataque para borrar un usuario sin el conocimiento del usuario.</li>
+  <li>Implementa medidas que eviten el ataque.</li>
+</ol>
+{% endblock %}

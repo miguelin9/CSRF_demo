@@ -1,0 +1,75 @@
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    {% block head %}
+    <meta charset="utf-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1" />
+    <meta name="author" content="Luis Molina" />
+    <title>CSRF POC Alumnos</title>
+
+    <!-- Bootstrap core CSS -->
+    <link
+      href="{{ url_for('static', filename='bootstrap.min.css') }}"
+      rel="stylesheet"
+      integrity="sha384-eOJMYsd53ii+scO/bJGFsiCZc+5NDVN2yr8+0RDqr0Ql0h+rP48ckxlpbzKgwra6"
+      crossorigin="anonymous"
+    />
+
+    <meta name="theme-color" content="#7952b3" />
+
+    <style>
+      .bd-placeholder-img {
+        font-size: 1.125rem;
+        text-anchor: middle;
+        -webkit-user-select: none;
+        -moz-user-select: none;
+        user-select: none;
+      }
+
+      @media (min-width: 768px) {
+        .bd-placeholder-img-lg {
+          font-size: 3.5rem;
+        }
+      }
+    </style>
+
+    <!-- Custom styles for this template -->
+    <link
+      href="{{ url_for('static', filename='headers.css') }}"
+      rel="stylesheet"
+    />
+    {% endblock %}
+  </head>
+  <body>
+    <div class="container">
+      <header
+        class="d-flex flex-wrap justify-content-center py-3 mb-4 border-bottom"
+      >
+        <a
+          href="/"
+          class="d-flex align-items-center mb-3 mb-md-0 me-md-auto text-dark text-decoration-none"
+        >
+          <svg class="bi me-2" width="40" height="32">
+            <use xlink:href="#bootstrap" />
+          </svg>
+          <span class="fs-4">CSRF POC IES Virgen del Carmen</span>
+        </a>
+
+        <ul class="nav nav-pills">
+          <li class="nav-item">
+            <a href="/" class="nav-link active">Alumnos</a>
+          </li>
+          <li class="nav-item"><a href="/ayuda" class="nav-link">Ayuda</a></li>
+        </ul>
+      </header>
+    </div>
+
+    <div class="container">
+      <p>Resetea la sesión: <button class="btn btn-primary" onclick="document.location.href='/reset';">Reset</button></p>
+      {% block content %}{% endblock %}
+    </div>
+    <div class="container" id="footer">
+      {% block footer %} Puesta en producción segura. IES Virgen del Carmen.  {% endblock %}
+    </div>
+  </body>
+</html>
