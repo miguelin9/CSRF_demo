@@ -1,10 +1,14 @@
+from flask_wtf.csrf import CSRFProtect
 from flask import Flask, session, redirect, url_for, render_template
 from flask_session import Session
 from flask.json import jsonify
 import json
 import redis
 
+
 app = Flask(__name__)
+csrf = CSRFProtect()
+csrf.init_app(app)
 app.secret_key = b"""I_.5qLr#ya2L'F4bvaasdf1Q8zxec]"""
 
 # Configure Redis for storing the session data on the server-side
@@ -34,7 +38,7 @@ def students():
 def help():
     return render_template("help.html")
 
-@app.route("/borrar/<student_id>")
+@app.route("/borrar/<student_id>", methods=['POST'])
 def delete(student_id):
     mystudents = session["students"]
     for student in mystudents:

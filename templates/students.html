@@ -6,7 +6,12 @@
   <h1>Listado de alumnos</h1>
   <ul>
   {% for student in students %}
-  <li>{{ student.firstname }} {{ student.lastname }} <a type="button" class="btn btn-outline-primary btn-sm" href="/borrar/{{student.id}}">Borrar</a></li>
+  <li>{{ student.firstname }} {{ student.lastname }} 
+    <form method='post' action="/borrar/{{student.id}}">
+      <input type="hidden" name="csrf_token" value="{{ csrf_token() }}"/>
+      <button type=summit class="btn btn-outline-primary btn-sm">Borrar</button>
+    </form>
+  </li>
   {% endfor %}
   </ul>
 {% endblock %}
